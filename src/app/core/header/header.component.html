@@ -1,0 +1,85 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- hamburger icon, displayed on the right, only for small sizes-->
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#nav-content"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- logo, displayed on the left -->
+      <a routerLink="" routerLinkActive="active" class="navbar-brand">
+        <i class="fa fa-book" aria-hidden="true"></i>
+        ~ Gourmet ~
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="nav-content">
+      <!-- navigation, displayed floating left -->
+      <ul class="nav navbar-nav">
+        <li>
+          <a
+            routerLink="recipes"
+            routerLinkActive="active"
+            style="cursor: pointer"
+            >Recipes</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="shopping-list"
+            routerLinkActive="active"
+            style="cursor: pointer"
+            >Shopping List</a
+          >
+        </li>
+      </ul>
+      <!-- app mode options, displayed floating right -->
+      <ul class="nav navbar-nav navbar-right">
+        <ng-template [ngIf]="!(authState | async).authenticated">
+          <li>
+            <a
+              routerLink="signin"
+              routerLinkActive="active"
+              style="cursor: pointer"
+              >Log In</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="signup"
+              routerLinkActive="active"
+              style="cursor: pointer"
+              >Register</a
+            >
+          </li>
+        </ng-template>
+        <ng-template [ngIf]="(authState | async).authenticated">
+          <li>
+            <a style="cursor: pointer" class="logged-in-user">{{
+              (getAuthState() | async).user
+            }}</a>
+          </li>
+          <li><a style="cursor: pointer" (click)="onLogout()">Log Out</a></li>
+          <li class="dropdown" appDropdown>
+            <a class="dropdown-toggle" role="button">
+              Database
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- <li><a style='cursor:pointer;' (click)="onSaveClicked()">Save</a></li>
+              <li><a style='cursor:pointer;' (click)="onFetchClicked()">Fetch</a></li> -->
+            </ul>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>

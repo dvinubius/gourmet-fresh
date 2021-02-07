@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+app-root {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  /* background:  linear-gradient(-225deg, rgba(220,220,220,0.8) 10%, rgba(246,246,246,0.65) 90%), url('./assets/images/wooden-table.jpg');
+  background-position: center;
+  background-repeat: none;
+  background-size: cover; */
+}
+
+body {
+  overflow-x: hidden;
+}

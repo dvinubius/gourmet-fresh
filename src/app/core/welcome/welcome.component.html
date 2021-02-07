@@ -1,0 +1,51 @@
+<div class="pane container">
+  <h2>
+    Welcome<span style="font-weight: bolder">{{
+      (getAuthState() | async).authenticated
+        ? ", " + (getAuthState() | async).user
+        : ""
+    }}</span
+    >!
+  </h2>
+  <h1><em>- Gourmet -</em></h1>
+  <h4>Recipe Management System</h4>
+
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <hr class="ruler" />
+    </div>
+  </div>
+
+  <div class="row gallery-row">
+    <img
+      class=""
+      src="https://drop.ndtv.com/albums/COOKS/corngallery/creolespicedcornthumb_640x480.jpg"
+      alt=""
+    />
+    <img
+      class=""
+      src="https://drop.ndtv.com/albums/COOKS/chicken-dinner/chickendinner_640x480.jpg"
+      alt=""
+    />
+    <img
+      class=""
+      src="https://external-preview.redd.it/iMPoQBatTlZD9QVZurXHQuVFwSg7BL4J9aiJPhfPxUg.jpg?auto=webp&s=33daeb965e918ca2191c85b3cbc3bcc874e9696d"
+      alt=""
+    />
+    <img
+      class=""
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuYTKQ5Cbw6lPmKuxAKFqFt2lfNWK9UGh8QNGckrfPFhVMBxcn"
+      alt=""
+    />
+    <img
+      class=""
+      src="https://migrationology.com/wp-content/uploads/2012/04/korean-street-food1.jpg"
+      alt=""
+    />
+    <img
+      class=""
+      src="https://c.tribune.com.pk/2018/01/1604600-image-1515523936-253-640x480.jpg"
+      alt=""
+    />
+  </div>
+</div>
