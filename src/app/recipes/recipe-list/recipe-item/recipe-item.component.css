@@ -1,0 +1,9 @@
+div.left {
+  max-width: 80%;
+}
+
+@media (max-width: 350px) {
+  div.left {
+    max-width: 70%;
+  }
+}

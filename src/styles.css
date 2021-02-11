@@ -4,6 +4,7 @@ app-root {
   flex-flow: column;
   justify-content: space-between;
   min-height: 100vh;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   /* background:  linear-gradient(-225deg, rgba(220,220,220,0.8) 10%, rgba(246,246,246,0.65) 90%), url('./assets/images/wooden-table.jpg');
   background-position: center;
   background-repeat: none;

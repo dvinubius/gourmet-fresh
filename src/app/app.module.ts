@@ -12,14 +12,17 @@ import { environment } from '../environments/environment.prod';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, Store } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { REDUCERS } from './store/app.reducers';
+import { REDUCERS, AppState } from './store/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './authentication/store/auth.effects';
 import { AuthenticationModule } from './authentication/authentication.module';
+
+import * as fromRecipes from './recipes/store/recipe.reducer';
+import * as fromShoppingList from './shopping-list/store/shopping-list.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,14 +34,19 @@ import { AuthenticationModule } from './authentication/authentication.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-
     StoreModule.forRoot(REDUCERS),
     EffectsModule.forRoot([AuthEffects]),
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule.forRoot(),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private store: Store<AppState>) {
+    console.log('here');
+    this.store.dispatch(new fromRecipes.FetchRecipes());
+    this.store.dispatch(new fromShoppingList.FetchIngredients());
+  }
+}

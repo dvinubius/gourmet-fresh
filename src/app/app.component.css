@@ -1,0 +1,66 @@
+h1 {
+  font-size: 1.5em;
+  margin: 5px;
+  line-height: 1.2em;
+}
+
+#app-name-span {
+  color: darkolivegreen;
+  text-shadow: 2px black;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+.above {
+  background: linear-gradient(to right, #ffffff, hsl(42, 92%, 96%), #ffffff);
+  min-height: calc(100vh - 40px);
+  padding-bottom: 48px;
+}
+.spacer {
+  min-height: 20px;
+}
+
+.footer {
+  text-align: center;
+  background-color: hsl(72, 3%, 98%);
+  padding: 8px;
+  border-top: 1px solid hsl(72, 75%, 43%);
+}
+.footer > .row {
+  position: relative;
+  margin: auto;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1em;
+  opacity: 0.8;
+}
+.in-footer {
+  transform: translateY(-4px);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.in-footer img {
+  margin: 0 30px;
+  opacity: 0.6;
+}
+img.ngrx {
+  transform: translateX(4px);
+}
+
+.above > app-header {
+  margin-bottom: 25px;
+}
+
+.user-info {
+  opacity: 0.9;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,11 +1,22 @@
 .navbar {
   margin-bottom: 0 !important;
+  background-color: hsl(72, 75%, 43%);
+  --text-color: darkred;
+  --text-color: #333;
+  /* --text-color: #fbfbfb; */
+}
+.navbar-nav > li > a {
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+.navbar > .container .navbar-brand {
+  color: var(--text-color);
 }
 
 .brand-logo {
   background-color: rgb(88, 14, 14);
-  padding:0 0.3em;  
-  box-sizing: border-box;   
+  padding: 0 0.3em;
+  box-sizing: border-box;
 }
 @media (max-width: 600px) {
   .brand-logo {
@@ -14,7 +25,6 @@
 }
 
 .logged-in-user {
-  opacity: 0.7;
-  font-weight: bolder;
-  color: darkorange !important;
+  opacity: 1;
+  color: #fcfcfc !important;
 }

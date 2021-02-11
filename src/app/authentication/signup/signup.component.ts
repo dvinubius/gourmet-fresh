@@ -37,10 +37,9 @@ export class SignupComponent implements OnInit {
     const email = this.email.value;
     const password = this.password.value;
     this.store.dispatch(
-      new fromAuth.AttemptSignin({
+      new fromAuth.AttemptSignup({
         username: email,
         password: password,
-        location: this.entryPoint,
       })
     );
   }

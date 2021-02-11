@@ -1,0 +1,10 @@
+a.disabled,
+a.disabled:hover {
+  background-color: darkgray;
+  color: lightgray;
+  cursor: default;
+}
+
+.ingredient-group {
+  max-width: 320px;
+}

@@ -1,0 +1,33 @@
+.help-block {
+  color: deeppink;
+  background: linear-gradient(to right, lightgrey, linen, white);
+}
+
+.form-control.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.btn {
+  min-width: 70px;
+}
+
+.expressive {
+  font-size: 1.3em;
+}
+
+.name-group {
+  max-width: 390px;
+}
+
+.amount-group {
+  max-width: 130px;
+}
+
+.buttons-wrapper button:first-child {
+  margin-right: 40px;
+}
+
+.buttons-wrapper button {
+  margin-top: 20px;
+  min-width: 100px;
+}

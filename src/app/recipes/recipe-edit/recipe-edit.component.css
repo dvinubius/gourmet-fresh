@@ -1,0 +1,25 @@
+.deleto {
+  border-radius: 30%;
+}
+
+.form-control.ng-invalid.ng-dirty,
+.form-control.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+#preview {
+  max-width: 250px;
+}
+
+.outer {
+  margin-top: -55px;
+}
+
+.main-buttons > button {
+  margin-right: 24px !important;
+  min-width: 100px;
+}
+
+.ingredient-row {
+  margin-bottom: 12px;
+}

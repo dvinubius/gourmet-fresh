@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img
+      src="{{ (recipesState | async)?.recipes[id]?.imagePath }}"
+      alt="{{ (recipesState | async)?.recipes[id]?.name }}"
+      class="img-responsive img-thumbnail"
+      style="max-height: 200px; margin-top: 20px"
+    />
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ (recipesState | async)?.recipes[id]?.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group" appDropdown>
+      <button class="btn btn-primary dropdown-toggle">
+        Manage Recipe <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            (click)="toShoppingList()"
+            style="cursor: pointer"
+            [ngClass]="{ disabled: disableAdd }"
+            >To Shopping List</a
+          >
+        </li>
+        <li>
+          <a
+            [routerLink]="['edit']"
+            fragment="router-outlet"
+            style="cursor: pointer"
+            *ngIf="isAuthenticated"
+            >Edit Recipe
+          </a>
+          <a style="cursor: not-allowed; opacity: 0.7" *ngIf="!isAuthenticated"
+            >Edit Recipe - Log In To Use</a
+          >
+        </li>
+        <li>
+          <a
+            style="cursor: pointer"
+            (click)="onDeleteClicked()"
+            *ngIf="isAuthenticated"
+            >Delete Recipe</a
+          >
+          <a style="cursor: not-allowed; opacity: 0.7" *ngIf="!isAuthenticated"
+            >Delete Recipe - Log In To Use</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <hr />
+  </div>
+  <div class="col-xs-12">
+    <p>{{ (recipesState | async)?.recipes[id]?.description }}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <hr />
+  </div>
+  <div class="col-xs-10 col-sm-7">
+    <ul class="list-group ingredient-group">
+      <li
+        class="list-group-item"
+        *ngFor="
+          let ingredient of (recipesState | async)?.recipes[id]?.ingredients
+        "
+      >
+        {{ ingredient.name }} -- {{ ingredient.amount }}
+      </li>
+    </ul>
+  </div>
+</div>

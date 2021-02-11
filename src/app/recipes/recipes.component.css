@@ -1,0 +1,11 @@
+.container {
+  padding-top: 26px;
+}
+
+#router-outlet {
+  margin-top: 55px;
+  margin-left: 48px;
+}
+.recipe-list-wrapper {
+  margin-bottom: 96px;
+}
