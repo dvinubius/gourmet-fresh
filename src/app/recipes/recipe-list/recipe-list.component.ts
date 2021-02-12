@@ -7,6 +7,7 @@ import { FeatureState } from '../store/recipe.reducer';
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
+  styleUrls: ['./recipe-list.component.css'],
 })
 export class RecipeListComponent implements OnInit {
   recipesState: Observable<fromRecipes.State>;

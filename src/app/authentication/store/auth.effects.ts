@@ -8,6 +8,7 @@ import { Signup, SetToken, SetUser } from './auth.reducer';
 import * as RecipeActions from '../../recipes/store/recipe.reducer';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.reducers';
+import * as ShoppingListActions from '../../shopping-list/store/shopping-list.reducer';
 
 @Injectable()
 export class AuthEffects {
@@ -96,6 +97,7 @@ export class AuthEffects {
       this.router.navigate(['/']);
       await this.afAuth.signOut();
       this.store.dispatch(new RecipeActions.FetchRecipes());
+      this.store.dispatch(new ShoppingListActions.FetchIngredients());
     })
   );
 

@@ -24,9 +24,13 @@ export class AuthInterceptor implements HttpInterceptor {
       select('auth'),
       take(1),
       switchMap((state: fromAuth.State) => {
-        const newReq = req.clone({
-          params: req.params.set('auth', state.token),
-        });
+        const newReq = req.clone(
+          state.token
+            ? {
+                params: req.params.set('auth', state.token),
+              }
+            : {}
+        );
         return next.handle(newReq);
       })
     );

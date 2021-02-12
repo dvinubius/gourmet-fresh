@@ -1,7 +1,3 @@
-.deleto {
-  border-radius: 30%;
-}
-
 .form-control.ng-invalid.ng-dirty,
 .form-control.ng-invalid.ng-touched {
   border: 1px solid red;
@@ -11,8 +7,21 @@
   max-width: 250px;
 }
 
-.outer {
+.wrapper {
   margin-top: -55px;
+  max-width: 585px;
+}
+@media (max-width: 1999px) {
+  .wrapper {
+    max-width: 485px;
+  }
+}
+
+.wrapper .form-control {
+  font-size: 1.1em;
+}
+.wrapper label {
+  font-weight: 600;
 }
 
 .main-buttons > button {
@@ -20,6 +29,34 @@
   min-width: 100px;
 }
 
-.ingredient-row {
+.image-row {
+  margin-bottom: 15px;
+}
+
+.ingredients {
+  margin-left: 0;
+}
+.ingredients h4,
+.ingredients label {
+  margin-left: -15px;
+}
+
+.ingredients .ingredient-row {
   margin-bottom: 12px;
+  display: flex;
+}
+
+.deleto-col {
+  width: 52px;
+}
+.amount-col {
+  width: 95px;
+  padding-left: 15px;
+}
+.name-col {
+  flex: 1;
+}
+
+.deleto {
+  border-radius: 4px;
 }

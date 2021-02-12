@@ -32,6 +32,6 @@ h4 {
 .gallery-row img {
   display: inline-block;
   width: 280px;
-  border: 3px solid rgb(92, 62, 62);
+  border: 1px solid rgb(92, 62, 62);
   margin: 10px 5px;
 }

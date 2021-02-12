@@ -6,6 +6,12 @@
   margin-top: 55px;
   margin-left: 48px;
 }
+@media (max-width: 991px) {
+  #router-outlet {
+    margin: 0;
+  }
+}
+
 .recipe-list-wrapper {
-  margin-bottom: 96px;
+  margin-bottom: 48px;
 }

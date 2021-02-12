@@ -7,8 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css'],
+  templateUrl: '../login-shared/login.component.html',
+  styleUrls: ['../login-shared/login.component.css'],
 })
 export class SigninComponent implements OnInit {
   entryPoint: string; // a URL : if redirected here because authentication was needed - where to go back after login?

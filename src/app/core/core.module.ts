@@ -11,16 +11,12 @@ import { AuthenticationRoutingModule } from '../authentication/authentication-ro
 import { AuthInterceptor } from '../shared/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoggingInterceptor } from '../shared/logging.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [HeaderComponent, WelcomeComponent, ErrorPageComponent],
-  imports: [ReactiveFormsModule, SharedModule, AppRoutingModule],
-  exports: [
-    HeaderComponent,
-    WelcomeComponent,
-    ErrorPageComponent,
-    AppRoutingModule,
-  ],
+  imports: [ReactiveFormsModule, SharedModule, RouterModule],
+  exports: [HeaderComponent, WelcomeComponent, ErrorPageComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },

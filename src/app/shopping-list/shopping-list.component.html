@@ -1,27 +1,24 @@
 <div class="container">
-  <div class="col-md-6">
-    <hr />
+  <div class="wrapper">
     <h2>Create a Shopping List!</h2>
+    <p class="demo-subtitle" *ngIf="!(authenticated$ | async)">
+      You can save your shopping list if you log in.
+    </p>
     <br /><br />
-  </div>
-
-  <div class="row">
-    <div class="col-xs-10">
-      <app-shopping-edit></app-shopping-edit>
-      <hr />
-      <ul class="list-group">
-        <a
-          class="list-group-item"
-          style="cursor: pointer"
-          *ngFor="
-            let ingredient of (shoppingListState | async).ingredients;
-            let i = index
-          "
-          (click)="editIngredient(i)"
-        >
-          {{ ingredient.name }} ({{ ingredient.amount }})
-        </a>
-      </ul>
-    </div>
+    <app-shopping-edit></app-shopping-edit>
+    <hr class="nice-width" style="margin: 24px 0" />
+    <ul class="list-group nice-width">
+      <a
+        class="list-group-item"
+        style="cursor: pointer"
+        *ngFor="
+          let ingredient of (shoppingListState | async).ingredients;
+          let i = index
+        "
+        (click)="editIngredient(i)"
+      >
+        {{ ingredient.name }} ({{ ingredient.amount }})
+      </a>
+    </ul>
   </div>
 </div>

@@ -30,20 +30,14 @@ export class RecipesEffects {
       this.store.pipe(select('recipes')),
       this.appStore.pipe(select('auth'))
     ),
-    map(([_, recipesState, authState]) => [
-      authState.token,
-      authState.uid,
-      recipesState,
-    ]),
-    switchMap(([token, uid, state]: [string, string, fromRecipes.State]) => {
+    map(([_, recipesState, authState]) => [authState.uid, recipesState]),
+    switchMap(([uid, state]: [string, fromRecipes.State]) => {
       const fragment = uid ?? 'demo';
-      const params = !!uid ? { auth: token } : {};
       return this.httpClient.put(
         `https://gourmet-8fcd2-default-rtdb.europe-west1.firebasedatabase.app/${fragment}/recipes.json`,
         state.recipes,
         {
           reportProgress: true,
-          params,
         }
       );
     })
@@ -53,15 +47,11 @@ export class RecipesEffects {
   recipesFetch = this.actions$.pipe(
     ofType(fromRecipes.FETCH_RECIPES),
     withLatestFrom(this.appStore.pipe(select('auth'))),
-    map(([_, authState]) => [authState.uid, authState.token]),
-    switchMap(([uid, token]: [string, string]) => {
+    map(([_, authState]) => [authState.uid]),
+    switchMap(([uid]: [string]) => {
       const fragment = uid ?? 'demo';
-      const params = !!uid ? { auth: token } : {};
       return this.httpClient.get<Recipe[]>(
-        `https://gourmet-8fcd2-default-rtdb.europe-west1.firebasedatabase.app/${fragment}/recipes.json`,
-        {
-          params,
-        }
+        `https://gourmet-8fcd2-default-rtdb.europe-west1.firebasedatabase.app/${fragment}/recipes.json`
       );
     }),
     map((recipes) => {

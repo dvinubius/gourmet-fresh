@@ -23,19 +23,23 @@ import { AuthenticationModule } from './authentication/authentication.module';
 
 import * as fromRecipes from './recipes/store/recipe.reducer';
 import * as fromShoppingList from './shopping-list/store/shopping-list.reducer';
+import { RecipesEffects } from './recipes/store/recipe.effects';
+import { ShoppingListEffects } from './shopping-list/store/shopping-list.effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     AuthenticationModule,
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
+    AppRoutingModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     StoreModule.forRoot(REDUCERS),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, RecipesEffects, ShoppingListEffects]),
     StoreRouterConnectingModule.forRoot(),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     BrowserAnimationsModule,
@@ -45,7 +49,6 @@ import * as fromShoppingList from './shopping-list/store/shopping-list.reducer';
 })
 export class AppModule {
   constructor(private store: Store<AppState>) {
-    console.log('here');
     this.store.dispatch(new fromRecipes.FetchRecipes());
     this.store.dispatch(new fromShoppingList.FetchIngredients());
   }

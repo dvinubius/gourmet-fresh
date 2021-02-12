@@ -6,8 +6,8 @@ import * as fromAuth from '../store/auth.reducer';
 
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'],
+  templateUrl: '../login-shared/login.component.html',
+  styleUrls: ['../login-shared/login.component.css'],
 })
 export class SignupComponent implements OnInit {
   entryPoint: string; // a URL : if redirected here because authentication was needed - where to go back after login?

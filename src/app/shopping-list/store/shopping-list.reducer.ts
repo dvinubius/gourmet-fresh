@@ -13,7 +13,7 @@ export interface State {
 }
 
 // for reducer
-const initialState = {
+const initialState: State = {
   ingredients: [],
   editedIngredient: null,
   editedIngredientIndex: -1,
@@ -22,8 +22,8 @@ const initialState = {
 /* ========== REDUCER ========= */
 export function shoppingListReducer(
   state = initialState,
-  action: ShoppingListActions
-) {
+  action: ShoppingListAction
+): State {
   switch (action.type) {
     case SET_INGREDIENTS:
       return {
@@ -75,8 +75,9 @@ export function shoppingListReducer(
         editedIngredientIndex: -1,
         editedIngredient: null,
       };
-    default:
+    default: {
       return state;
+    }
   }
 }
 
@@ -136,7 +137,7 @@ export class FetchIngredients implements Action {
 }
 
 // ALL ACTIONS ON SHOPPING-LIST, bundled as one TS type
-type ShoppingListActions =
+type ShoppingListAction =
   | SetIngredients
   | AddIngredient
   | AddIngredients

@@ -6,7 +6,7 @@ import { Actions } from '@ngrx/effects';
 import { FeatureState } from '../store/shopping-list.reducer';
 import { Store, select } from '@ngrx/store';
 
-import { withLatestFrom, switchMap, map } from 'rxjs/operators';
+import { withLatestFrom, switchMap, map, filter } from 'rxjs/operators';
 import { AppState } from '../../store/app.reducers';
 import { Ingredient } from '../../shared/ingredient.model';
 
@@ -15,7 +15,6 @@ export class ShoppingListEffects {
   constructor(
     private actions$: Actions,
     private httpClient: HttpClient,
-    private store: Store<FeatureState>,
     private appStore: Store<AppState>
   ) {}
 
@@ -28,43 +27,35 @@ export class ShoppingListEffects {
       fromShoppingList.UPDATE_INGREDIENT
     ),
     withLatestFrom(
-      this.store.pipe(select('ingredients')),
+      this.appStore.pipe(select('shoppingList')),
       this.appStore.pipe(select('auth'))
     ),
     map(([_, shoppingListState, authState]) => [
-      authState.token,
       authState.uid,
       shoppingListState,
     ]),
-    switchMap(
-      ([token, uid, state]: [string, string, fromShoppingList.State]) => {
-        const fragment = uid ?? 'demo';
-        const params = !!uid ? { auth: token } : {};
-        return this.httpClient.put(
-          `https://gourmet-8fcd2-default-rtdb.europe-west1.firebasedatabase.app/${fragment}/shopping-list.json`,
-          state.ingredients,
-          {
-            reportProgress: true,
-            params,
-          }
-        );
-      }
-    )
+    filter(([uid, _]) => !!uid), // ignore if not logged in - shopping list can be used as a guest, too
+    switchMap(([uid, shoppingListState]: [string, fromShoppingList.State]) => {
+      const fragment = uid ?? 'demo';
+      return this.httpClient.put(
+        `https://gourmet-8fcd2-default-rtdb.europe-west1.firebasedatabase.app/${fragment}/shopping-list.json`,
+        shoppingListState.ingredients,
+        {
+          reportProgress: true,
+        }
+      );
+    })
   );
 
   @Effect()
   recipesFetch = this.actions$.pipe(
     ofType(fromShoppingList.FETCH_INGREDIENTS),
     withLatestFrom(this.appStore.pipe(select('auth'))),
-    map(([_, authState]) => [authState.uid, authState.token]),
-    switchMap(([uid, token]: [string, string]) => {
+    map(([_, authState]) => [authState.uid]),
+    switchMap(([uid]: [string, string]) => {
       const fragment = uid ?? 'demo';
-      const params = !!uid ? { auth: token } : {};
       return this.httpClient.get<Ingredient[]>(
-        `https://gourmet-8fcd2-default-rtdb.europe-west1.firebasedatabase.app/${fragment}/shopping-list.json`,
-        {
-          params,
-        }
+        `https://gourmet-8fcd2-default-rtdb.europe-west1.firebasedatabase.app/${fragment}/shopping-list.json`
       );
     }),
     map((ingredients) => {

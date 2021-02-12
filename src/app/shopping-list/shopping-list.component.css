@@ -1,3 +1,18 @@
-.list-group {
-  max-width: 360px;
+.wrapper {
+  max-width: 500px;
+}
+
+@media (max-width: 530px) {
+  .wrapper {
+    width: 100%;
+  }
+}
+
+.nice-width {
+  max-width: calc(3 * 80px + 2 * 24px);
+}
+
+.demo-subtitle {
+  opacity: 0.8;
+  font-size: 1.1em;
 }

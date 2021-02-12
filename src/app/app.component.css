@@ -14,17 +14,19 @@ p {
 }
 
 .above {
-  background: linear-gradient(to right, #ffffff, hsl(42, 92%, 96%), #ffffff);
+  background: linear-gradient(to right, #ffffff, hsl(42, 90%, 98%), #ffffff);
   min-height: calc(100vh - 40px);
   padding-bottom: 48px;
 }
-.spacer {
-  min-height: 20px;
+.header-spacer {
+  min-height: 54px;
+  margin-bottom: 24px;
 }
 
 .footer {
   text-align: center;
-  background-color: hsl(72, 3%, 98%);
+  /* background-color: hsl(72, 3%, 98%); */
+  background-color: var(--footer-col);
   padding: 8px;
   border-top: 1px solid hsl(72, 75%, 43%);
 }
@@ -33,10 +35,12 @@ p {
   margin: auto;
 }
 
+.in-footer,
 .footer p {
   margin: 0;
-  font-size: 1em;
-  opacity: 0.8;
+  font-size: 0.9em;
+  /* opacity: 0.6; */
+  color: var(--on-primary-text-col);
 }
 .in-footer {
   transform: translateY(-4px);
@@ -46,11 +50,16 @@ p {
   justify-content: center;
 }
 .in-footer img {
-  margin: 0 30px;
-  opacity: 0.6;
+  margin: 0 8px;
+  /* opacity: 0.6; */
 }
-img.ngrx {
-  transform: translateX(4px);
+.in-footer img.bootstrap {
+  margin-right: 4px;
+}
+@media (max-width: 478px) {
+  .in-footer img {
+    margin: 0 4px;
+  }
 }
 
 .above > app-header {

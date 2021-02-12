@@ -1,33 +1,63 @@
+:host {
+  --fr-width: 80px;
+  --padding-width: 24px;
+}
+
 .help-block {
-  color: deeppink;
-  background: linear-gradient(to right, lightgrey, linen, white);
+  color: brown;
 }
 
 .form-control.ng-invalid.ng-touched {
-  border: 1px solid red;
-}
-
-.btn {
-  min-width: 70px;
+  border: 1px solid brown;
 }
 
 .expressive {
   font-size: 1.3em;
 }
 
+.form-wrapper {
+  display: flex;
+}
+
 .name-group {
-  max-width: 390px;
+  width: calc(2 * var(--fr-width) + var(--padding-width));
+  margin-right: var(--padding-width);
 }
 
 .amount-group {
-  max-width: 130px;
+  max-width: 80px;
+  box-sizing: border-box;
+  padding: 0;
 }
 
-.buttons-wrapper button:first-child {
-  margin-right: 40px;
+.buttons-wrapper {
+  width: calc(3 * var(--fr-width) + 2 * var(--padding-width));
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .buttons-wrapper button {
-  margin-top: 20px;
-  min-width: 100px;
+  min-width: 80px;
+  text-transform: uppercase;
+}
+.buttons-wrapper button:not(:last-child) {
+  margin-right: 24px;
+}
+
+@media (max-width: 332px) {
+  .buttons-wrapper {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .buttons-wrapper button {
+    width: 100%;
+    min-width: unset;
+  }
+  .buttons-wrapper button:not(:last-child) {
+    margin-right: 12px !important;
+  }
+  .buttons-wrapper button:last-child {
+    margin: 0 !important;
+  }
 }

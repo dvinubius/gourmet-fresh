@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as ShoppingListActions from '../../shopping-list/store/shopping-list.reducer';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -12,7 +13,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
-  disableAdd: boolean;
+  addedIngredientsToList: boolean;
   recipesState: Observable<fromRecipes.State>;
   id: number; // keep this as source of truth, not including it in the 'recipes' FeatureState
   isAuthenticated = false;
@@ -25,10 +26,11 @@ export class RecipeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.disableAdd = false;
+    this.addedIngredientsToList = false;
     this.route.params.subscribe((par) => {
       this.id = +par['id'];
       this.recipesState = this.store.select('recipes');
+      this.addedIngredientsToList = false;
     });
     this.afAuth.currentUser.then((usr) => {
       console.log(usr);
@@ -36,12 +38,8 @@ export class RecipeDetailComponent implements OnInit {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.disableAdd = false;
-  }
-
   toShoppingList() {
-    if (this.disableAdd) {
+    if (this.addedIngredientsToList) {
       // do nothing, ingredients already added
       return;
     }
@@ -49,20 +47,18 @@ export class RecipeDetailComponent implements OnInit {
     this.store
       .pipe(select('recipes'), take(1))
       .subscribe((selectedState: fromRecipes.State) => {
-        // this.store.dispatch(
-        //     new ShoppingListActions.AddIngredients(
-        //       selectedState.recipes[this.id].ingredients
-        //     )
-        // );
-        this.disableAdd = true;
-        // confirm
-        window.alert('Ingredients (optimistically) added to Shopping List!');
+        this.store.dispatch(
+          new ShoppingListActions.AddIngredients(
+            selectedState.recipes[this.id].ingredients
+          )
+        );
+        this.addedIngredientsToList = true;
       });
   }
 
   onDeleteClicked() {
     this.store.dispatch(new fromRecipes.DeleteRecipe(this.id));
-    // go away, away, I say
+    // go away
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

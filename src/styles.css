@@ -9,8 +9,93 @@ app-root {
   background-position: center;
   background-repeat: none;
   background-size: cover; */
+
+  --primary-col: hsl(72, 75%, 43%);
+  --primary-col-darker: hsl(72, 75%, 39%);
+  --on-primary-text-col: #333;
+  /* --on-primary-text-col: #fafafa; */
+  --on-primary-darker-text-col: #fafafa;
+  /* --on-primary-darker-text-col: #333; */
+
+  /* --sec-col: hsl(345, 60%, 52%); */
+  --sec-col: hsl(360, 73%, 65%);
+  --on-sec-text-col: var(--on-primary-text-col);
+  /* --sec-col-darker: hsl(345, 75%, 41%); */
+  --sec-col-darker: hsl(360, 60%, 52%);
+
+  --footer-col: hsl(22, 32%, 98%);
 }
 
 body {
   overflow-x: hidden;
+  font-size: 16px;
+}
+
+.btn {
+  transition: color 0.1s ease-out, background-color 0.1s ease-out,
+    border-color 0.1s ease-out;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-default:hover {
+  background-color: #ddd;
+  color: #fff;
+  border-color: currentColor;
+}
+
+.btn-primary {
+  background-color: var(--primary-col);
+  border-color: var(--primary-col-darker);
+  color: var(--on-primary-text-col);
+}
+.btn-primary:hover {
+  background-color: var(--primary-col-darker);
+  color: var(--on-primary-darker-text-col);
+  border-color: currentColor;
+}
+.btn-primary[disabled] {
+  color: var(--on-primary-darker-text-col);
+}
+.btn-primary[disabled]:hover {
+  background-color: var(--primary-col-darker);
+  color: var(--on-primary-darker-text-col);
+}
+
+.btn-danger {
+  background-color: var(--sec-col);
+  color: var(--on-sec-text-col);
+  border-color: var(--sec-col-darker);
+}
+.btn-danger:hover {
+  background-color: var(--sec-col-darker);
+  color: var(--on-primary-darker-text-col);
+  border-color: currentColor;
+}
+
+.list-group-item.active,
+.list-group-item.active:focus {
+  border-color: var(--primary-col-darker);
+  background-color: white;
+  background-color: var(--primary-col);
+  color: var(--on-primary-text-col);
+  transition: background-color 0.1s ease-out, color 0.05s ease-out;
+}
+
+.list-group-item.active .list-group-item-text,
+.list-group-item.active:focus .list-group-item-text {
+  color: var(--on-primary-text-col);
+  transition: background-color 0.1s ease-out, color 0.05s ease-out;
+}
+
+.list-group-item.active:hover {
+  border-color: var(--primary-col-darker);
+  background-color: white;
+  background-color: var(--primary-col);
+  color: var(--on-primary-darker-text-col);
+  transition: background-color 0.1s ease-out, color 0.05s ease-out;
+}
+.list-group-item.active:hover .list-group-item-text {
+  color: var(--on-primary-darker-text-col);
+  transition: background-color 0.1s ease-out, color 0.05s ease-out;
 }

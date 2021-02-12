@@ -1,16 +1,24 @@
+:host {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
 .navbar {
   margin-bottom: 0 !important;
-  background-color: hsl(72, 75%, 43%);
-  --text-color: darkred;
-  --text-color: #333;
+  background-color: var(--primary-col);
   /* --text-color: #fbfbfb; */
 }
 .navbar-nav > li > a {
-  color: var(--text-color);
+  color: var(--on-primary-text-col);
   text-transform: uppercase;
+  transition: all 0.1s ease-out;
 }
+.navbar-nav > li > a:hover {
+  color: var(--on-primary-darker-text-col);
+}
+
 .navbar > .container .navbar-brand {
-  color: var(--text-color);
+  color: var(--on-primary-text-col);
 }
 
 .brand-logo {

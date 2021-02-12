@@ -25,10 +25,7 @@ export class ShoppingEditComponent implements OnInit {
   ngOnInit() {
     this.ingredientForm = new FormGroup({
       ingredientName: new FormControl(null, Validators.required),
-      amount: new FormControl(null, [
-        Validators.required,
-        this.forbiddenAmounts,
-      ]),
+      amount: new FormControl(null, [Validators.required]),
     });
     this.subscription = this.store.select('shoppingList').subscribe((state) => {
       if (state.editedIngredientIndex > -1) {
@@ -66,14 +63,6 @@ export class ShoppingEditComponent implements OnInit {
       );
     }
     this.onClear();
-  }
-
-  forbiddenAmounts(control: FormControl): { [errorCode: string]: boolean } {
-    if (control.value <= 0) {
-      return { forbiddenAmounts: true };
-    }
-    // else
-    return null;
   }
 
   onDelete() {
