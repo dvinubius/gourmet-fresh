@@ -7,3 +7,17 @@ div.left {
     max-width: 70%;
   }
 }
+
+.gourmet-list-item .list-group-item-text {
+  margin-top: 12px;
+  font-size: 0.85em;
+  height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gourmet-list-item {
+  height: 76px;
+  overflow: hidden;
+}

@@ -9,6 +9,7 @@ import * as RecipeActions from '../../recipes/store/recipe.reducer';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.reducers';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.reducer';
+import { FETCH_INGREDIENTS } from '../../shopping-list/store/shopping-list.reducer';
 
 @Injectable()
 export class AuthEffects {
@@ -86,6 +87,9 @@ export class AuthEffects {
         {
           type: RecipeActions.FETCH_RECIPES,
         },
+        {
+          type: ShoppingListActions.FETCH_INGREDIENTS,
+        },
       ];
     }),
     catchError((e) => {
@@ -100,7 +104,10 @@ export class AuthEffects {
       this.router.navigate(['/']);
       await this.afAuth.signOut();
       this.store.dispatch(new RecipeActions.FetchRecipes());
-      this.store.dispatch(new ShoppingListActions.FetchIngredients());
+      setTimeout(
+        () => this.store.dispatch(new ShoppingListActions.FetchIngredients()),
+        1000
+      );
     })
   );
 

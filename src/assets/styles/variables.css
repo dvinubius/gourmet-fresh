@@ -1,0 +1,23 @@
+:root {
+  --header-height: 60px;
+  --default-bootstrap-header-height: 52px;
+
+  --primary-col: hsl(72, 75%, 43%);
+  --primary-col-darker: hsl(72, 75%, 39%);
+  --primary-col-darkest: hsl(72, 75%, 19%);
+  --on-primary-text-col: #333;
+  /* --on-primary-text-col: #fafafa; */
+  --on-primary-darker-text-col: #fafafa;
+  /* --on-primary-darker-text-col: #333; */
+
+  /* --sec-col: hsl(345, 60%, 52%); */
+  --sec-col: hsl(360, 73%, 65%);
+  --on-sec-text-col: var(--on-primary-text-col);
+  /* --sec-col-darker: hsl(345, 75%, 41%); */
+  --sec-col-darker: hsl(360, 60%, 52%);
+
+  --tert-col-lighter: hsl(307, 54%, 40%);
+  --tert-col: hsl(308, 75%, 31%);
+  --tert-col-dark: hsl(307, 100%, 17%);
+  --footer-col: hsl(21, 23%, 95%);
+}

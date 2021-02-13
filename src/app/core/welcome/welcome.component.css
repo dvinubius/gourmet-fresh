@@ -25,7 +25,6 @@ h4 i {
 }
 
 .ruler {
-  border-color: var(--tert-col-dark);
   width: 868px;
 }
 @media (max-width: 905px) {
@@ -51,6 +50,5 @@ h4 i {
 .gallery-row img {
   display: inline-block;
   width: 280px;
-  border: 1px solid var(--tert-col-dark);
   margin: 10px 5px;
 }

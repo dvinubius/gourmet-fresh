@@ -144,4 +144,5 @@ type ShoppingListAction =
   | UpdateIngredient
   | DeleteIngredient
   | StartEditIngredient
-  | StopEditIngredient;
+  | StopEditIngredient
+  | FetchIngredients;

@@ -1,3 +1,24 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  font-family: "Roboto Mono", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
+
+  background: linear-gradient(
+      120deg,
+      hsla(0, 0%, 77%, 0.7),
+      hsla(0, 0%, 100%, 0.83),
+      hsla(0, 0%, 100%, 0.83),
+      hsla(0, 0%, 77%, 0.7)
+    ),
+    url("../assets/images/bg2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 h1 {
   font-size: 1.5em;
   margin: 5px;
@@ -14,7 +35,7 @@ p {
 }
 
 .above {
-  background: linear-gradient(to right, #ffffff, hsl(42, 90%, 98%), #ffffff);
+  /* background: linear-gradient(to right, #ffffff, hsl(42, 90%, 98%), #ffffff); */
   min-height: calc(100vh - 40px);
   padding-bottom: 48px;
 }

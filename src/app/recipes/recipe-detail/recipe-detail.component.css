@@ -21,3 +21,9 @@ a.delete-item.disabled {
 .delete-item:hover {
   color: var(--sec-col);
 }
+
+.detail-image {
+  max-height: 300px;
+  max-width: 100%;
+  margin-top: 20px;
+}

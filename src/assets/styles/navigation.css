@@ -1,0 +1,26 @@
+.list-group-item.active,
+.list-group-item.active:focus {
+  border-color: var(--primary-col-darker);
+  background-color: white;
+  background-color: var(--primary-col);
+  color: var(--on-primary-text-col);
+  transition: background-color 0.1s ease-out, color 0.05s ease-out;
+}
+
+.list-group-item.active .list-group-item-text,
+.list-group-item.active:focus .list-group-item-text {
+  color: var(--on-primary-text-col);
+  transition: background-color 0.1s ease-out, color 0.05s ease-out;
+}
+
+.list-group-item.active:hover {
+  border-color: var(--primary-col-darker);
+  background-color: white;
+  background-color: var(--primary-col);
+  color: var(--on-primary-darker-text-col);
+  transition: background-color 0.1s ease-out, color 0.05s ease-out;
+}
+.list-group-item.active:hover .list-group-item-text {
+  color: var(--on-primary-darker-text-col);
+  transition: background-color 0.1s ease-out, color 0.05s ease-out;
+}
