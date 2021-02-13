@@ -1,15 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/styles/variables.css";
+@import "./assets/styles/typography.css";
 @import "./assets/styles/buttons.css";
 @import "./assets/styles/navigation.css";
 
 body {
   overflow-x: hidden;
-  font-size: 16px;
 }
 
 hr {
-  /* border-color: var(--on-primary-text-col); */
   border-color: #eee;
 }
 

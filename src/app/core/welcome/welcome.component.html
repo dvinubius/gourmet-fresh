@@ -1,14 +1,4 @@
 <div class="pane container">
-  <h2>
-    Welcome<span *ngIf="(getAuthState() | async).authenticated">,&nbsp;</span
-    ><span style="font-weight: 600">{{
-      (getAuthState() | async).authenticated
-        ? (getAuthState() | async).user
-        : ""
-    }}</span
-    >!
-  </h2>
-  <br />
   <h1 class="title"><em>~ Gourmet ~</em></h1>
   <h4>
     <i class="fa fa-book" aria-hidden="true"></i>Recipe Management System<i
@@ -16,7 +6,6 @@
       aria-hidden="true"
     ></i>
   </h4>
-  <br />
   <br />
 
   <div class="row gallery-row">

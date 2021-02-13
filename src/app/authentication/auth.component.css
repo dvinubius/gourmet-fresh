@@ -17,7 +17,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 120px;
+  padding-top: 10vh;
 }
 
 .wrapper > div {
@@ -48,9 +48,4 @@ h1 {
 
 .lazy-guest {
   width: 360px;
-}
-
-.lazy-guest a {
-  color: var(--primary-col-darker);
-  cursor: pointer;
 }

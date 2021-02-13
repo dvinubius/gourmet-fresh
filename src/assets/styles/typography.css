@@ -1,0 +1,19 @@
+body {
+  font-size: 16px;
+
+  font-family: "Roboto Mono", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
+}
+.gourmet-link {
+  color: var(--primary-col-darker);
+  cursor: pointer;
+}
+.gourmet-link:hover {
+  color: var(--primary-col-darkest);
+}
+.gourmet-link.inverted {
+  color: var(--primary-col-darkest);
+}
+.gourmet-link.inverted:hover {
+  color: var(--primary-col-darker);
+}
