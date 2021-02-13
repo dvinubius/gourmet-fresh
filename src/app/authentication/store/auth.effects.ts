@@ -4,7 +4,7 @@ import * as AuthActions from '../store/auth.reducer';
 import { map, switchMap, mergeMap, tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Signup, SetToken, SetUser } from './auth.reducer';
+import { Signup, SetToken, SetUser, SetAuthError } from './auth.reducer';
 import * as RecipeActions from '../../recipes/store/recipe.reducer';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.reducers';
@@ -26,10 +26,7 @@ export class AuthEffects {
         authData.password
       )
     ),
-    catchError((e) => {
-      alert('Error while signing up: ' + e.message);
-      return e;
-    }),
+
     switchMap(async () => {
       const usr = await this.afAuth.currentUser;
       return {
@@ -41,6 +38,9 @@ export class AuthEffects {
     mergeMap(({ token, email, uid }) => {
       this.router.navigate(['/']);
       return [new Signup(), new SetToken(token), new SetUser({ email, uid })];
+    }),
+    catchError((e) => {
+      return [new SetAuthError(e.message)];
     })
   );
 
@@ -87,6 +87,9 @@ export class AuthEffects {
           type: RecipeActions.FETCH_RECIPES,
         },
       ];
+    }),
+    catchError((e) => {
+      return [new SetAuthError(e.message)];
     })
   );
 

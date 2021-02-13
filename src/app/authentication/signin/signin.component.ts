@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as fromAuth from '../store/auth.reducer';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from '../../store/app.reducers';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-signin',
@@ -14,7 +16,10 @@ export class SigninComponent implements OnInit {
   entryPoint: string; // a URL : if redirected here because authentication was needed - where to go back after login?
   form: FormGroup;
 
-  serverMessage: string;
+  authError: Observable<string> = this.store.pipe(
+    select('auth'),
+    map((auth) => auth.authError)
+  );
 
   constructor(
     private fb: FormBuilder,
@@ -23,6 +28,7 @@ export class SigninComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.store.dispatch(new fromAuth.SetAuthError(null));
     this.entryPoint = this.route.snapshot.queryParams['entryPoint'] || '';
     this.form = this.fb.group({
       email: ['', [Validators.email, Validators.required]],

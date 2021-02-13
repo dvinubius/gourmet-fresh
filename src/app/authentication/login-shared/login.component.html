@@ -29,6 +29,9 @@
           >Password must be at least 6 characters</span
         >
       </div>
+      <div class="error-message" *ngIf="authError | async as errorMessage">
+        {{ errorMessage }}
+      </div>
       <button
         class="btn btn-primary submitter"
         type="submit"

@@ -5,6 +5,7 @@ export interface State {
   authenticated: boolean;
   user: string;
   uid: string;
+  authError: string;
 }
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   authenticated: false,
   user: null,
   uid: null,
+  authError: null,
 };
 
 /* ========== REDUCER ========= */
@@ -46,6 +48,12 @@ export function authReducer(state = initialState, action: AuthActions) {
         uid: action.payload.uid,
       };
     }
+    case SET_AUTH_ERROR: {
+      return {
+        ...state,
+        authError: action.payload,
+      };
+    }
     default:
       return state;
   }
@@ -61,6 +69,7 @@ export const SIGN_UP = 'SIGN_UP';
 export const SIGN_OUT = 'SIGN_OUT';
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_USER = 'SET_USER';
+export const SET_AUTH_ERROR = 'SET_AUTH_ERROR';
 
 // Bundle all actions into one type
 type AuthActions =
@@ -70,7 +79,8 @@ type AuthActions =
   | SetToken
   | AttemptSignup
   | AttemptSignin
-  | SetUser;
+  | SetUser
+  | SetAuthError;
 
 export class AttemptSignup implements Action {
   readonly type = ATTEMPT_SIGN_UP;
@@ -102,4 +112,9 @@ export class SetUser implements Action {
   readonly type = SET_USER;
 
   constructor(public payload: { email: string; uid: string }) {}
+}
+
+export class SetAuthError implements Action {
+  readonly type = SET_AUTH_ERROR;
+  constructor(public payload: string) {}
 }

@@ -20,8 +20,12 @@
 }
 
 .wrapper .form-control,
-.wrapper .invalid-feedback {
+.wrapper .invalid-feedback,
+.error-message {
   font-size: 0.9em !important;
+}
+.error-message {
+  color: var(--sec-col-darker);
 }
 
 .wrapper .form-group label {
