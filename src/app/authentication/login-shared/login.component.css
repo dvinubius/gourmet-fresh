@@ -1,9 +1,9 @@
 .form-control.ng-invalid.ng-touched {
-  border: 1px solid red;
+  border: 1px solid var(--sec-col-darker);
 }
 
 .invalid-feedback {
-  color: red;
+  color: var(--sec-col-darker);
 }
 
 .wrapper {
@@ -21,7 +21,7 @@
 
 .wrapper .form-control,
 .wrapper .invalid-feedback {
-  font-size: 1.05em !important;
+  font-size: 0.9em !important;
 }
 
 .wrapper .form-group label {

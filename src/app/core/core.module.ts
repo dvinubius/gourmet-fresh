@@ -12,9 +12,10 @@ import { AuthInterceptor } from '../shared/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoggingInterceptor } from '../shared/logging.interceptor';
 import { RouterModule } from '@angular/router';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [HeaderComponent, WelcomeComponent, ErrorPageComponent],
+  declarations: [HeaderComponent, WelcomeComponent, ErrorPageComponent, AboutComponent],
   imports: [ReactiveFormsModule, SharedModule, RouterModule],
   exports: [HeaderComponent, WelcomeComponent, ErrorPageComponent],
   providers: [

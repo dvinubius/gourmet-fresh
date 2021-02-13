@@ -1,47 +1,30 @@
 <div class="pane container">
   <h2>
-    Welcome<span style="font-weight: bolder">{{
+    Welcome<span *ngIf="(getAuthState() | async).authenticated">,&nbsp;</span
+    ><span style="font-weight: 600">{{
       (getAuthState() | async).authenticated
-        ? ", " + (getAuthState() | async).user
+        ? (getAuthState() | async).user
         : ""
     }}</span
     >!
   </h2>
-  <h1><em>- Gourmet -</em></h1>
-  <h4>Recipe Management System</h4>
-
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <hr class="ruler" />
-    </div>
-  </div>
+  <br />
+  <h1 class="title"><em>~ Gourmet ~</em></h1>
+  <h4>
+    <i class="fa fa-book" aria-hidden="true"></i>Recipe Management System<i
+      class="fa fa-book"
+      aria-hidden="true"
+    ></i>
+  </h4>
+  <br />
+  <hr class="ruler" />
 
   <div class="row gallery-row">
-    <img
-      class=""
-      src="https://drop.ndtv.com/albums/COOKS/corngallery/creolespicedcornthumb_640x480.jpg"
-      alt=""
-    />
-    <img
-      class=""
-      src="https://drop.ndtv.com/albums/COOKS/chicken-dinner/chickendinner_640x480.jpg"
-      alt=""
-    />
-    <img
-      class=""
-      src="https://external-preview.redd.it/iMPoQBatTlZD9QVZurXHQuVFwSg7BL4J9aiJPhfPxUg.jpg?auto=webp&s=33daeb965e918ca2191c85b3cbc3bcc874e9696d"
-      alt=""
-    />
-    <img
-      class=""
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuYTKQ5Cbw6lPmKuxAKFqFt2lfNWK9UGh8QNGckrfPFhVMBxcn"
-      alt=""
-    />
-    <img
-      class=""
-      src="https://migrationology.com/wp-content/uploads/2012/04/korean-street-food1.jpg"
-      alt=""
-    />
+    <img class="" src="assets/images/dish1.jpg" alt="" />
+    <img class="" src="assets/images/dish2.jpg" alt="" />
+    <img class="" src="assets/images/dish3.jpg" alt="" />
+    <img class="" src="assets/images/dish4.jpg" alt="" />
+    <img class="" src="assets/images/dish5.jpg" alt="" />
     <img class="" src="assets/images/dish6.jpg" alt="" />
   </div>
 </div>

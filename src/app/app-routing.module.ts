@@ -5,9 +5,11 @@ import { WelcomeComponent } from './core/welcome/welcome.component';
 import { ErrorPageComponent } from './core/error-page/error-page.component';
 import { PreloadAllModules } from '@angular/router';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { AboutComponent } from './core/about/about.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent, pathMatch: 'full' },
+  { path: 'about', component: AboutComponent, pathMatch: 'full' },
   {
     path: 'recipes',
     loadChildren: () =>

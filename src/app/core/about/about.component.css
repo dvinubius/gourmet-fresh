@@ -1,0 +1,23 @@
+.wrapper {
+  height: 100%;
+}
+
+.inner {
+  max-width: 600px;
+}
+
+.ingredients {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+.ingredients .angular {
+  margin-left: 12px;
+}
+.ingredients .ngrx {
+  margin-left: 10px;
+}
+.ingredients .bootstrap {
+  margin-left: 4px;
+}
